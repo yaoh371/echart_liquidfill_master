@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src='../dist/echarts-3.7.0.js'></script>
+        <script src='../dist/echarts-liquidfill.js'></script>
+    </head>
+    <body>
+        <style>
+            #main5{width: 150px;height: 150px;border-radius: 150px;}
+            .chart {
+                width: 100%;
+                margin: 0 auto;
+                height: 100%;
+                border-radius: 100%;
+                border: 15px solid #294D8F;
+            }
+        </style>
+
+        <div id='main5'>
+            <div class="chart"></div>
+        </div>
+        <script>
+            var bgColor = '#071927';
+            var containers = document.getElementsByClassName('chart');
+            var options = [{
+                series: [{
+                    type: 'liquidFill',
+                    data: [0.6, 0.5, 0.4, 0.3],
+                    radius: '80%',
+                    phase: 0,
+                    period: 5000,
+                    outline: {
+                        show: false
+                    }
+                }]
+            }];
+
+            var charts = [];
+            for (var i = 0; i < options.length; ++i) {
+                var chart = echarts.init(containers[0]);
+                chart.setOption(options[0]);
+                charts.push(chart);
+            }
+
+            window.onresize = function () {
+                for (var i = 0; i < charts.length; ++i) {
+                    charts[i].resize();
+                }
+            };
+        </script>
+
+        <script>
+            var _hmt = _hmt || [];
+            (function() {
+            var hm = document.createElement('script');
+            hm.src = '//hm.baidu.com/hm.js?4bad1df23f079e0d12bdbef5e65b072f';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+    </body>
+</html>
